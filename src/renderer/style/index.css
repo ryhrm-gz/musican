@@ -10,3 +10,7 @@ body {
 .header {
   -webkit-app-region: drag;
 }
+
+.header-menu {
+  -webkit-app-region: no-drag;
+}

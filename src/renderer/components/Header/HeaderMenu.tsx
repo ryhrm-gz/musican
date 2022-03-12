@@ -6,7 +6,7 @@ export const HeaderMenu = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   return (
-    <MantineMenu>
+    <MantineMenu className="header-menu">
       <MantineMenu.Item
         onClick={() => toggleColorScheme()}
         icon={dark ? <SunIcon /> : <MoonIcon />}

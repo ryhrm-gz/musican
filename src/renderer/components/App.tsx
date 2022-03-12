@@ -3,7 +3,8 @@ import {
   ColorSchemeProvider,
   MantineProvider,
 } from "@mantine/core";
-import { Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { Home } from "../pages/Home";
 import { useLocalStorage } from "../utils/useLocalStorage";
 import { Layout } from "./Layout";
 
@@ -20,9 +21,11 @@ export const App = () => {
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      <MantineProvider theme={{ colorScheme }}>
+      <MantineProvider theme={{ colorScheme, primaryColor: "teal" }}>
         <Layout>
-          <Routes></Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
         </Layout>
       </MantineProvider>
     </ColorSchemeProvider>
