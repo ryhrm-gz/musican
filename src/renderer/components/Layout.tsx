@@ -8,7 +8,19 @@ type Props = {
 
 export const Layout = ({ children }: Props) => {
   return (
-    <AppShell padding="sm" header={<Header />}>
+    <AppShell
+      padding="sm"
+      header={<Header />}
+      styles={(theme) => ({
+        main: {
+          height: "calc(100vh - 55px)",
+          backgroundColor:
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[8]
+              : theme.colors.gray[1],
+        },
+      })}
+    >
       {children}
     </AppShell>
   );
