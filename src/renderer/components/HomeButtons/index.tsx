@@ -3,7 +3,7 @@ import { FilePlusIcon, PlusIcon } from "@radix-ui/react-icons";
 
 export const HomeButtons = () => {
   return (
-    <Box sx={{ width: "100%" }} mb={20}>
+    <Box sx={{ width: "100%" }} mb={15}>
       <Group sx={{ width: "100%", height: "100%" }} position="right">
         <Group>
           <Button leftIcon={<PlusIcon />} variant="outline" size="xs">
