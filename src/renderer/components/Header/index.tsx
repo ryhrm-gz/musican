@@ -11,11 +11,11 @@ export const Header = () => {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   return (
-    <MantineHeader height={55} className="header">
+    <MantineHeader height={50} className="header">
       <Group position="apart" sx={{ width: "100%", height: "100%" }} px="xs">
         <Box></Box>
         <Logo
-          style={{ width: "auto", height: 55 }}
+          style={{ width: "auto", height: 50 }}
           fill={dark ? "white" : "black"}
         />
         <HeaderMenu />

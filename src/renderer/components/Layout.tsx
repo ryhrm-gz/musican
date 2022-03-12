@@ -13,7 +13,7 @@ export const Layout = ({ children }: Props) => {
       header={<Header />}
       styles={(theme) => ({
         main: {
-          height: "calc(100vh - 55px)",
+          height: "calc(100vh - 50px)",
           backgroundColor:
             theme.colorScheme === "dark"
               ? theme.colors.dark[8]

@@ -5,10 +5,18 @@ import {
   GridIcon,
   RowsIcon,
 } from "@radix-ui/react-icons";
-import { useState } from "react";
+import { useLocalStorage } from "../../utils/useLocalStorage";
 
 export const HomeViewModeConstrol = () => {
-  const [updatedSort, setUpdatedSort] = useState("latest");
+  const [updatedSort, setUpdatedSort] = useLocalStorage<"latest" | "oldest">({
+    key: "updated-sort",
+    defaultValue: "latest",
+  });
+  const [viewMode, setViewMode] = useLocalStorage<"grid" | "rows">({
+    key: "view-mode",
+    defaultValue: "grid",
+  });
+
   const updatedSortIcon =
     updatedSort === "latest" ? <ArrowDownIcon /> : <ArrowUpIcon />;
   return (
@@ -27,6 +35,8 @@ export const HomeViewModeConstrol = () => {
         </Button>
         <Box>
           <SegmentedControl
+            value={viewMode}
+            onChange={(value) => setViewMode(value as "grid" | "rows")}
             size="sm"
             data={[
               {
@@ -38,7 +48,7 @@ export const HomeViewModeConstrol = () => {
                 ),
               },
               {
-                value: "list",
+                value: "rows",
                 label: (
                   <Center>
                     <RowsIcon />
