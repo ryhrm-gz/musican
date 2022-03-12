@@ -1,0 +1,8 @@
+node_modules
+dist
+release
+npm-*.log
+pnpm-*.log
+yarn-*.log
+.env
+.DS_Store
