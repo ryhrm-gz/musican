@@ -1,5 +1,6 @@
 import { Box, Button, Group } from "@mantine/core";
-import { FilePlusIcon, PlusIcon } from "@radix-ui/react-icons";
+import { PlusIcon } from "@radix-ui/react-icons";
+import { AddFileButton } from "./AddFileButton";
 
 export const HomeButtons = () => {
   return (
@@ -9,9 +10,7 @@ export const HomeButtons = () => {
           <Button leftIcon={<PlusIcon />} variant="outline" size="xs">
             プロジェクト作成
           </Button>
-          <Button size="xs" leftIcon={<FilePlusIcon />}>
-            ファイル追加
-          </Button>
+          <AddFileButton />
         </Group>
       </Group>
     </Box>
