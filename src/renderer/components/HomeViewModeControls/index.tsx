@@ -3,11 +3,11 @@ import {
   ArrowDownIcon,
   ArrowUpIcon,
   GridIcon,
-  RowsIcon,
+  HamburgerMenuIcon,
 } from "@radix-ui/react-icons";
 import { useLocalStorage } from "../../utils/useLocalStorage";
 
-export const HomeViewModeConstrol = () => {
+export const HomeViewModeConstrols = () => {
   const [updatedSort, setUpdatedSort] = useLocalStorage<"latest" | "oldest">({
     key: "updated-sort",
     defaultValue: "latest",
@@ -51,7 +51,7 @@ export const HomeViewModeConstrol = () => {
                 value: "rows",
                 label: (
                   <Center>
-                    <RowsIcon />
+                    <HamburgerMenuIcon />
                   </Center>
                 ),
               },

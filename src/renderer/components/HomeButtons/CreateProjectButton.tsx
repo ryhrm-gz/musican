@@ -2,6 +2,7 @@ import { Button, Group, Modal, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
+import { createProject } from "../../utils/createProject";
 
 export const CreateProjectButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,17 @@ export const CreateProjectButton = () => {
     },
   });
 
+  const handleSubmit = async (values: { name: string }) => {
+    const name = values.name.trim();
+    const result = await createProject(name);
+    if (!result) {
+      alert("プロジェクトの作成に失敗しました");
+    }
+    setIsOpen(false);
+    form.reset();
+    return;
+  };
+
   return (
     <>
       <Modal
@@ -26,7 +38,7 @@ export const CreateProjectButton = () => {
         opened={isOpen}
         onClose={() => setIsOpen(false)}
       >
-        <form onSubmit={form.onSubmit((values) => console.log(values))}>
+        <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
           <TextInput
             label="プロジェクト名"
             size="sm"
