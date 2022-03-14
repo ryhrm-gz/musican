@@ -7,7 +7,7 @@ import {
 } from "@radix-ui/react-icons";
 import { useLocalStorage } from "../../utils/useLocalStorage";
 
-export const HomeViewModeConstrols = () => {
+export const HomeViewModeControls = () => {
   const [updatedSort, setUpdatedSort] = useLocalStorage<"latest" | "oldest">({
     key: "updated-sort",
     defaultValue: "latest",
