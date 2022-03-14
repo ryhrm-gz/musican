@@ -23,6 +23,8 @@ export const HomeViewModeControls = () => {
     <Box sx={{ width: "100%" }} mb={5}>
       <Group sx={{ width: "100%", height: "100%" }} position="apart">
         <Button
+          compact
+          pl={3}
           size="xs"
           color="gray"
           variant="subtle"
