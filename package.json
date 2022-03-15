@@ -17,12 +17,11 @@
     "package": "ts-node ./scripts/package.ts"
   },
   "dependencies": {
-    "@mantine/core": "^4.0.1",
-    "@mantine/dropzone": "^4.0.1",
+    "@mantine/core": "^4.0.4",
+    "@mantine/dropzone": "^4.0.4",
     "@mantine/form": "^4.0.4",
-    "@mantine/hooks": "^4.0.1",
-    "@mantine/next": "^4.0.1",
-    "@mantine/notifications": "^4.0.1",
+    "@mantine/hooks": "^4.0.4",
+    "@mantine/notifications": "^4.0.4",
     "@radix-ui/react-icons": "^1.1.0",
     "dexie": "^3.2.1",
     "dexie-react-hooks": "^1.1.1",

@@ -11,7 +11,7 @@ import { Layout } from "./Layout";
 export const App = () => {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: "color-scheme",
-    defaultValue: "light",
+    defaultValue: "dark",
   });
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
