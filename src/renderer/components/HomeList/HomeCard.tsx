@@ -52,8 +52,32 @@ export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
   }
 
   return (
-    <Card>
-      <h3>{name}</h3>
+    <Card
+      shadow="md"
+      p="sm"
+      sx={{ width: "100%", height: "100%", cursor: "pointer" }}
+    >
+      <Group position="apart">
+        <Badge color="green" size="sm" variant="light" radius="xs">
+          V{count}
+        </Badge>
+        <ListMenu />
+      </Group>
+      <Tooltip
+        wrapLines
+        label={name}
+        transition="fade"
+        openDelay={500}
+        width={200}
+        gutter={-30}
+      >
+        <Text size="sm" lineClamp={3} mt={4}>
+          {name}
+        </Text>
+      </Tooltip>
+      <Text size="xs" color="dimmed" mt={6}>
+        {updatedAt.toLocaleString("ja-JP")}
+      </Text>
     </Card>
   );
 };

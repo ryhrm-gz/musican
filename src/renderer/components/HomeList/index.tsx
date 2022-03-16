@@ -4,7 +4,7 @@ import { db } from "../../db";
 import { HomeCard } from "./HomeCard";
 
 export const HomeList = () => {
-  const projects = useLiveQuery(() => db.projects.toArray());
+  const projects = useLiveQuery(() => db.projects.reverse().toArray());
   return (
     <ScrollArea style={{ height: "calc(100vh - 150px)" }} scrollbarSize={8}>
       <Grid mt={13} columns={42} gutter="lg" sx={{ width: "100%", margin: 0 }}>
