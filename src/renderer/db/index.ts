@@ -1,4 +1,4 @@
-import Dexie, { Table } from "dexie";
+import Dexie, { IndexableType, Table } from "dexie";
 
 export type Project = {
   id?: number;
@@ -9,7 +9,7 @@ export type Project = {
 
 export type Audio = {
   id?: number;
-  projectId: number;
+  projectId: number | IndexableType;
   name: string;
   path: string;
   createdAt: Date;

@@ -1,6 +1,7 @@
 import { Button } from "@mantine/core";
 import { FilePlusIcon } from "@radix-ui/react-icons";
 import { ChangeEvent, useRef } from "react";
+import { createProjectWithAddFile } from "../../utils/createProjectWithAddFile";
 
 export const AddFileButton = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -17,7 +18,7 @@ export const AddFileButton = () => {
     }, 1000);
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
     if (file.type !== "audio/mpeg" && file.type !== "audio/wav") {
@@ -25,7 +26,7 @@ export const AddFileButton = () => {
       event.target.value = "";
       return;
     }
-    console.log(event.target.files);
+    await createProjectWithAddFile(file.name, file.path);
     event.target.value = "";
   };
 
