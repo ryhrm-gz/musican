@@ -15,11 +15,12 @@ export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
     return null;
   }
 
-  const count = useLiveQuery(() =>
-    db.audios.where("projectId").equals(id).count()
+  const count = useLiveQuery(
+    () => db.audios.where("projectId").equals(id).count(),
+    [id]
   );
 
-  const hasAudio = count !== 0;
+  const hasAudios = count !== 0;
 
   return (
     <Card
@@ -29,12 +30,12 @@ export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
     >
       <Group position="apart">
         <Badge
-          color={hasAudio ? "green" : "gray"}
+          color={hasAudios ? "green" : "gray"}
           size="sm"
           variant="light"
           radius="xs"
         >
-          {hasAudio ? `V${count}` : "no files"}
+          {hasAudios ? `V${count}` : "no files"}
         </Badge>
         <ListMenu id={id} />
       </Group>
@@ -48,7 +49,7 @@ export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
       >
         <Text
           size="sm"
-          color={hasAudio ? "" : "dimmed"}
+          color={hasAudios ? "" : "dimmed"}
           lineClamp={3}
           mt={4}
           sx={{ overflowWrap: "anywhere" }}
