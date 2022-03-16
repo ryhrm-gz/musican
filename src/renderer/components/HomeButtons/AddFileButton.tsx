@@ -7,7 +7,7 @@ export const AddFileButton = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const addProcessing = useRef(false);
 
-  const addFile = () => {
+  const handleClick = () => {
     if (addProcessing.current) return;
     addProcessing.current = true;
 
@@ -32,7 +32,7 @@ export const AddFileButton = () => {
 
   return (
     <>
-      <Button size="xs" leftIcon={<FilePlusIcon />} onClick={addFile}>
+      <Button size="xs" leftIcon={<FilePlusIcon />} onClick={handleClick}>
         ファイル追加
       </Button>
       <input

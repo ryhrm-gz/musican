@@ -14,6 +14,7 @@ export const addFile = async (
     });
     return id;
   } catch (error) {
+    console.log(error);
     return null;
   }
 };
