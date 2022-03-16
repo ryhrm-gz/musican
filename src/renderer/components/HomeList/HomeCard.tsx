@@ -40,7 +40,13 @@ export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
           width={200}
           gutter={-30}
         >
-          <Text size="sm" color="dimmed" lineClamp={3} mt={4}>
+          <Text
+            size="sm"
+            color="dimmed"
+            lineClamp={3}
+            mt={4}
+            sx={{ overflowWrap: "anywhere" }}
+          >
             {name}
           </Text>
         </Tooltip>
@@ -71,7 +77,7 @@ export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
         width={200}
         gutter={-30}
       >
-        <Text size="sm" lineClamp={3} mt={4}>
+        <Text size="sm" lineClamp={3} mt={4} sx={{ overflowWrap: "anywhere" }}>
           {name}
         </Text>
       </Tooltip>
