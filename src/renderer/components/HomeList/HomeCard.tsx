@@ -19,43 +19,7 @@ export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
     db.audios.where("projectId").equals(id).count()
   );
 
-  if (count === 0) {
-    return (
-      <Card
-        shadow="md"
-        p="sm"
-        sx={{ width: "100%", height: "100%", cursor: "pointer" }}
-      >
-        <Group position="apart">
-          <Badge color="gray" size="sm" variant="light" radius="xs">
-            no files
-          </Badge>
-          <ListMenu />
-        </Group>
-        <Tooltip
-          wrapLines
-          label={name}
-          transition="fade"
-          openDelay={500}
-          width={200}
-          gutter={-30}
-        >
-          <Text
-            size="sm"
-            color="dimmed"
-            lineClamp={3}
-            mt={4}
-            sx={{ overflowWrap: "anywhere" }}
-          >
-            {name}
-          </Text>
-        </Tooltip>
-        <Text size="xs" color="dimmed" mt={6}>
-          {createdAt.toLocaleString("ja-JP")}
-        </Text>
-      </Card>
-    );
-  }
+  const hasAudio = count !== 0;
 
   return (
     <Card
@@ -64,20 +28,31 @@ export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
       sx={{ width: "100%", height: "100%", cursor: "pointer" }}
     >
       <Group position="apart">
-        <Badge color="green" size="sm" variant="light" radius="xs">
-          V{count}
+        <Badge
+          color={hasAudio ? "green" : "gray"}
+          size="sm"
+          variant="light"
+          radius="xs"
+        >
+          {hasAudio ? `V${count}` : "no files"}
         </Badge>
-        <ListMenu />
+        <ListMenu id={id} />
       </Group>
       <Tooltip
         wrapLines
         label={name}
         transition="fade"
         openDelay={500}
-        width={200}
+        width={300}
         gutter={-30}
       >
-        <Text size="sm" lineClamp={3} mt={4} sx={{ overflowWrap: "anywhere" }}>
+        <Text
+          size="sm"
+          color={hasAudio ? "" : "dimmed"}
+          lineClamp={3}
+          mt={4}
+          sx={{ overflowWrap: "anywhere" }}
+        >
           {name}
         </Text>
       </Tooltip>

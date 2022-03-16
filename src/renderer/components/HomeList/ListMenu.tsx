@@ -1,7 +1,12 @@
 import { Menu } from "@mantine/core";
 import { FilePlusIcon, Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
+import { IndexableType } from "dexie";
 
-export const ListMenu = () => {
+type Props = {
+  id: number;
+};
+
+export const ListMenu = ({ id }: Props) => {
   return (
     <Menu className="header-menu">
       <Menu.Item icon={<FilePlusIcon />}>ファイル追加</Menu.Item>
