@@ -1,4 +1,4 @@
-import { Badge, Card, Group, Text } from "@mantine/core";
+import { Badge, Card, Group, Text, Tooltip } from "@mantine/core";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../db";
 import { ListMenu } from "./ListMenu";
@@ -15,7 +15,9 @@ export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
     return null;
   }
 
-  const count = useLiveQuery(() => db.audios.where("id").equals(id).count());
+  const count = useLiveQuery(() =>
+    db.audios.where("projectId").equals(id).count()
+  );
 
   if (count === 0) {
     return (
@@ -25,17 +27,23 @@ export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
         sx={{ width: "100%", height: "100%", cursor: "pointer" }}
       >
         <Group position="apart">
-          <Badge color="gray" size="xs" variant="light" radius="xs" px={0}>
-            Project
+          <Badge color="gray" size="sm" variant="light" radius="xs">
+            no files
           </Badge>
           <ListMenu />
         </Group>
-        <Text size="sm" color="dimmed" lineClamp={4} mt={4}>
-          {name}
-        </Text>
-        <Text size="xs" color="dimmed" mt={6}>
-          ファイルなし
-        </Text>
+        <Tooltip
+          wrapLines
+          label={name}
+          transition="fade"
+          openDelay={500}
+          width={200}
+          gutter={-30}
+        >
+          <Text size="sm" color="dimmed" lineClamp={3} mt={4}>
+            {name}
+          </Text>
+        </Tooltip>
         <Text size="xs" color="dimmed" mt={6}>
           {createdAt.toLocaleString("ja-JP")}
         </Text>
