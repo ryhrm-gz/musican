@@ -26,7 +26,11 @@ export const AddFileButton = () => {
       event.target.value = "";
       return;
     }
-    await createProjectWithAddFile(file.name, file.path);
+
+    const name =
+      file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
+
+    await createProjectWithAddFile(name, file.path);
     event.target.value = "";
   };
 

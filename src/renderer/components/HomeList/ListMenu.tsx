@@ -19,7 +19,6 @@ export const ListMenu = ({ id }: Props) => {
 
   const handleChangeInput = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    console.log(file);
     if (!file) return;
     if (file.type !== "audio/mpeg" && file.type !== "audio/wav") {
       alert("MP3 or WAVファイルを選択してください");
