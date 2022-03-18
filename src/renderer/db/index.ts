@@ -13,6 +13,7 @@ export type Audio = {
   name: string;
   path: string;
   createdAt: Date;
+  updatedAt: Date;
 };
 
 export class MusicanDB extends Dexie {
@@ -22,8 +23,8 @@ export class MusicanDB extends Dexie {
   constructor() {
     super("MusicanDB");
     this.version(1).stores({
-      projects: "++id, name, updatedAt",
-      audios: "++id, projectId, name, path, createdAt",
+      projects: "++id, name, createdAt, updatedAt",
+      audios: "++id, projectId, name, path, createdAt, updatedAt",
     });
   }
 }

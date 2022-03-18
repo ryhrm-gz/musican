@@ -7,10 +7,9 @@ type Props = {
   id?: number;
   name: string;
   updatedAt: Date;
-  createdAt: Date;
 };
 
-export const HomeCard = ({ id, name, updatedAt, createdAt }: Props) => {
+export const HomeCard = ({ id, name, updatedAt }: Props) => {
   if (!id) {
     return null;
   }

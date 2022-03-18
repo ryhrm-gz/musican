@@ -5,15 +5,19 @@ export const addFile = async (
   name: string,
   path: string
 ) => {
-  try {
-    const id = await db.audios.add({
+  const now = new Date();
+  db.transaction("rw", [db.projects, db.audios], async () => {
+    await db.projects.update(projectId, {
+      updatedAt: now,
+    });
+    await db.audios.add({
       projectId,
       name,
       path,
-      createdAt: new Date(),
+      createdAt: now,
+      updatedAt: now,
     });
-    return id;
-  } catch (error) {
-    return null;
-  }
+  }).catch((error) => {
+    alert("ファイルの追加に失敗しました");
+  });
 };
