@@ -3,9 +3,9 @@ import {
   ColorSchemeProvider,
   MantineProvider,
 } from "@mantine/core";
+import { useLocalStorage } from "@mantine/hooks";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "../pages/Home";
-import { useLocalStorage } from "../utils/useLocalStorage";
 import { Layout } from "./Layout";
 
 export const App = () => {

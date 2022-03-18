@@ -5,17 +5,13 @@ import {
   GridIcon,
   HamburgerMenuIcon,
 } from "@radix-ui/react-icons";
-import { useLocalStorage } from "../../utils/useLocalStorage";
+import { useAtom } from "jotai";
+import { updatedSortState } from "../../state/updatedSortState";
+import { viewModeState } from "../../state/viewModeState";
 
 export const HomeViewModeControls = () => {
-  const [updatedSort, setUpdatedSort] = useLocalStorage<"latest" | "oldest">({
-    key: "updated-sort",
-    defaultValue: "latest",
-  });
-  const [viewMode, setViewMode] = useLocalStorage<"grid" | "rows">({
-    key: "view-mode",
-    defaultValue: "grid",
-  });
+  const [updatedSort, setUpdatedSort] = useAtom(updatedSortState);
+  const [viewMode, setViewMode] = useAtom(viewModeState);
 
   const updatedSortIcon =
     updatedSort === "latest" ? <ArrowDownIcon /> : <ArrowUpIcon />;
