@@ -28,7 +28,7 @@ export const ListMenu = ({ id }: Props) => {
   };
 
   return (
-    <Menu className="header-menu">
+    <>
       <input
         hidden
         name="file"
@@ -37,13 +37,15 @@ export const ListMenu = ({ id }: Props) => {
         onChange={handleChange}
         accept=".mp3,.wav"
       />
-      <Menu.Item icon={<FilePlusIcon />} onClick={handleClick}>
-        ファイル追加
-      </Menu.Item>
-      <Menu.Item icon={<Pencil1Icon />}>名前変更</Menu.Item>
-      <Menu.Item color="red" icon={<TrashIcon />}>
-        削除
-      </Menu.Item>
-    </Menu>
+      <Menu className="header-menu">
+        <Menu.Item icon={<FilePlusIcon />} onClick={handleClick}>
+          ファイル追加
+        </Menu.Item>
+        <Menu.Item icon={<Pencil1Icon />}>名前変更</Menu.Item>
+        <Menu.Item color="red" icon={<TrashIcon />}>
+          削除
+        </Menu.Item>
+      </Menu>
+    </>
   );
 };
