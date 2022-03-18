@@ -6,6 +6,7 @@ import { createProject } from "../../utils/createProject";
 
 export const CreateProjectButton = () => {
   const [opened, setOpened] = useState(false);
+  const [typing, setTyping] = useState(false);
   const [name, setName] = useInputState("");
   const [error, setError] = useState("");
 
@@ -43,7 +44,15 @@ export const CreateProjectButton = () => {
           mb={15}
           data-autofocus
           value={name}
+          onCompositionStart={() => setTyping(true)}
+          onCompositionEnd={() => setTyping(false)}
           onChange={setName}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !typing) {
+              e.preventDefault();
+              handleClickButton();
+            }
+          }}
           error={error}
         />
         <Group position="right">
