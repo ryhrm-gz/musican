@@ -4,9 +4,9 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
-import { Route, Routes } from "react-router-dom";
-import { Home } from "../pages/Home";
+import { Outlet, Router } from "@tanstack/react-location";
 import { Layout } from "./Layout";
+import { location, routes } from "./Router";
 
 export const App = () => {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
@@ -23,9 +23,9 @@ export const App = () => {
     >
       <MantineProvider theme={{ colorScheme, primaryColor: "teal" }}>
         <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
+          <Router routes={routes} location={location}>
+            <Outlet />
+          </Router>
         </Layout>
       </MantineProvider>
     </ColorSchemeProvider>

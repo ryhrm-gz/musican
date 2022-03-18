@@ -1,4 +1,5 @@
 import { Badge, Card, Group, Text, Tooltip } from "@mantine/core";
+import { Link } from "@tanstack/react-location";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../db";
 import { ListMenu } from "./ListMenu";
@@ -26,6 +27,8 @@ export const HomeCard = ({ id, name, updatedAt }: Props) => {
       shadow="md"
       p="sm"
       sx={{ width: "100%", height: "100%", cursor: "pointer" }}
+      component={Link}
+      to={`/project/${id}`}
     >
       <Group position="apart">
         <Badge
