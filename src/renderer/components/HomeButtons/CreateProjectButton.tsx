@@ -5,8 +5,7 @@ import { useState } from "react";
 import { createProject } from "../../utils/createProject";
 
 export const CreateProjectButton = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
+  const [opened, setOpened] = useState(false);
 
   const form = useForm({
     initialValues: {
@@ -26,7 +25,7 @@ export const CreateProjectButton = () => {
     if (!result) {
       alert("プロジェクトの作成に失敗しました");
     }
-    setIsOpen(false);
+    setOpened(false);
     form.reset();
     return;
   };
@@ -35,8 +34,8 @@ export const CreateProjectButton = () => {
     <>
       <Modal
         title="プロジェクトを作成"
-        opened={isOpen}
-        onClose={() => setIsOpen(false)}
+        opened={opened}
+        onClose={() => setOpened(false)}
       >
         <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
           <TextInput
@@ -57,7 +56,7 @@ export const CreateProjectButton = () => {
         leftIcon={<PlusIcon />}
         variant="outline"
         size="xs"
-        onClick={openModal}
+        onClick={() => setOpened(true)}
       >
         プロジェクト作成
       </Button>
