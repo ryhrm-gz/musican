@@ -2,6 +2,7 @@ import { Menu } from "@mantine/core";
 import { FilePlusIcon, Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { ChangeEvent, useRef, useState } from "react";
 import { addFile } from "../../utils/addFile";
+import { deleteProject } from "../../utils/deleteProject";
 import { ChangeProjectNameModal } from "../ChangeProjectNameModal";
 
 type Props = {
@@ -29,6 +30,10 @@ export const ListMenu = ({ id }: Props) => {
     event.target.value = "";
   };
 
+  const handleClickDelete = async () => {
+    await deleteProject(id);
+  };
+
   return (
     <>
       <input
@@ -51,7 +56,7 @@ export const ListMenu = ({ id }: Props) => {
         <Menu.Item icon={<Pencil1Icon />} onClick={() => setIsModalOpen(true)}>
           名前変更
         </Menu.Item>
-        <Menu.Item color="red" icon={<TrashIcon />}>
+        <Menu.Item color="red" icon={<TrashIcon />} onClick={handleClickDelete}>
           削除
         </Menu.Item>
       </Menu>
