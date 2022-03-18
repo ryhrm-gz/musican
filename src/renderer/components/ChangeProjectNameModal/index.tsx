@@ -7,37 +7,17 @@ type Props = {
   projectId: number;
   opened: boolean;
   setOpened: Dispatch<SetStateAction<boolean>>;
+  defaultName: string;
 };
 
 export const ChangeProjectNameModal = ({
   projectId,
   opened,
   setOpened,
+  defaultName,
 }: Props) => {
-  const [name, setName] = useInputState("");
+  const [name, setName] = useInputState(defaultName);
   const [error, setError] = useState("");
-  // const form = useForm({
-  //   initialValues: {
-  //     name: "",
-  //   },
-  //   validate: {
-  //     name: (value) =>
-  //       value.replace(/\s/g, "").length === 0
-  //         ? "プロジェクト名を入力してください"
-  //         : null,
-  //   },
-  // });
-
-  // const handleSubmit = async (values: { name: string }) => {
-  //   const name = values.name.trim();
-  //   const result = await changeProjectName(projectId, name);
-  //   if (!result) {
-  //     alert("名前の変更に失敗しました");
-  //   }
-  //   setOpened(false);
-  //   form.reset();
-  //   return;
-  // };
 
   const validate = () => name.replace(/\s/g, "").length === 0;
 
@@ -49,7 +29,6 @@ export const ChangeProjectNameModal = ({
     changeProjectName(projectId, name)
       .then(() => {
         setOpened(false);
-        setName("");
       })
       .catch(() => {
         alert("プロジェクトの作成に失敗しました");

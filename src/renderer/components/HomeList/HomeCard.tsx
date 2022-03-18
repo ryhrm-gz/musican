@@ -36,7 +36,7 @@ export const HomeCard = ({ id, name, updatedAt }: Props) => {
         >
           {hasAudios ? `V${count}` : "no files"}
         </Badge>
-        <ListMenu id={id} />
+        <ListMenu id={id} name={name} />
       </Group>
       <Tooltip
         wrapLines

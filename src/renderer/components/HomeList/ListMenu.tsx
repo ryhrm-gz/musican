@@ -6,9 +6,10 @@ import { ChangeProjectNameModal } from "../ChangeProjectNameModal";
 
 type Props = {
   id: number;
+  name: string;
 };
 
-export const ListMenu = ({ id }: Props) => {
+export const ListMenu = ({ id, name }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -43,6 +44,7 @@ export const ListMenu = ({ id }: Props) => {
         projectId={id}
         opened={isModalOpen}
         setOpened={setIsModalOpen}
+        defaultName={name}
       />
       <Menu className="header-menu">
         <Menu.Item icon={<FilePlusIcon />} onClick={handleClickAddFile}>
