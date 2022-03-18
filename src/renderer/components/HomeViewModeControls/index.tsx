@@ -29,7 +29,7 @@ export const HomeViewModeControls = () => {
             setUpdatedSort(updatedSort === "latest" ? "oldest" : "latest")
           }
         >
-          更新日
+          更新日時
         </Button>
         <Box>
           <SegmentedControl

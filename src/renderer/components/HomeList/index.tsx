@@ -1,10 +1,11 @@
-import { Grid, ScrollArea } from "@mantine/core";
+import { Grid, ScrollArea, Table } from "@mantine/core";
 import { useLiveQuery } from "dexie-react-hooks";
 import { useAtomValue } from "jotai";
 import { db } from "../../db";
 import { updatedSortState } from "../../state/updatedSortState";
 import { viewModeState } from "../../state/viewModeState";
 import { HomeCard } from "./HomeCard";
+import { HomeRow } from "./HomeRow";
 
 export const HomeList = () => {
   const updatedSort = useAtomValue(updatedSortState);
@@ -43,7 +44,21 @@ export const HomeList = () => {
           })}
         </Grid>
       ) : (
-        ""
+        <Table verticalSpacing="sm" highlightOnHover>
+          <thead>
+            <tr>
+              <th>名前</th>
+              <th>バージョン</th>
+              <th>更新日時</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {projects?.map((project) => {
+              return <HomeRow key={project.id} {...project} />;
+            })}
+          </tbody>
+        </Table>
       )}
     </ScrollArea>
   );
