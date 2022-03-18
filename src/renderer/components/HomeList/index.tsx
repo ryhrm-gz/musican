@@ -10,11 +10,15 @@ import { HomeRow } from "./HomeRow";
 export const HomeList = () => {
   const updatedSort = useAtomValue(updatedSortState);
   const viewMode = useAtomValue(viewModeState);
-  const projects = useLiveQuery(() => {
+  const projects = useLiveQuery(async () => {
     if (updatedSort === "latest") {
-      return db.projects.where("id").above(0).reverse().sortBy("updatedAt");
+      return await db.projects
+        .where("id")
+        .above(0)
+        .reverse()
+        .sortBy("updatedAt");
     } else {
-      return db.projects.where("id").above(0).sortBy("updatedAt");
+      return await db.projects.where("id").above(0).sortBy("updatedAt");
     }
   }, [updatedSort]);
   return (

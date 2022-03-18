@@ -20,7 +20,10 @@ export const ChangeProjectNameModal = ({
   const [name, setName] = useInputState("");
   const [error, setError] = useState("");
 
-  const project = useLiveQuery(() => db.projects.get(projectId), [projectId]);
+  const project = useLiveQuery(
+    async () => await db.projects.get(projectId),
+    [projectId]
+  );
 
   const validate = () => name.replace(/\s/g, "").length === 0;
 

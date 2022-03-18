@@ -5,7 +5,7 @@ import { HomeViewModeControls } from "../components/HomeViewModeControls";
 
 export const Home = () => {
   return (
-    <Box>
+    <Box p="sm" pb={0}>
       <HomeButtons />
       <HomeViewModeControls />
       <Divider />

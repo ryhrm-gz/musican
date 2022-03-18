@@ -9,7 +9,7 @@ type Props = {
 export const Layout = ({ children }: Props) => {
   return (
     <AppShell
-      padding="sm"
+      padding={0}
       header={<Header />}
       styles={(theme) => ({
         main: {

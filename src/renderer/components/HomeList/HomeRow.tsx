@@ -22,7 +22,7 @@ export const HomeRow = ({ id, name, updatedAt }: Props) => {
   const hasAudios = count !== 0;
 
   return (
-    <tr>
+    <tr style={{ cursor: "pointer" }}>
       <td>{name}</td>
       <td>
         <Badge
