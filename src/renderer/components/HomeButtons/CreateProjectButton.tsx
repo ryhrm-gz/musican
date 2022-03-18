@@ -1,34 +1,34 @@
 import { Button, Group, Modal, TextInput } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import { useInputState } from "@mantine/hooks";
 import { PlusIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createProject } from "../../utils/createProject";
 
 export const CreateProjectButton = () => {
   const [opened, setOpened] = useState(false);
+  const [name, setName] = useInputState("");
+  const [error, setError] = useState("");
 
-  const form = useForm({
-    initialValues: {
-      name: "",
-    },
-    validate: {
-      name: (value) =>
-        value.replace(/\s/g, "").length === 0
-          ? "プロジェクト名を入力してください"
-          : null,
-    },
-  });
+  const validate = () => name.replace(/\s/g, "").length === 0;
 
-  const handleSubmit = async (values: { name: string }) => {
-    const name = values.name.trim();
-    const result = await createProject(name);
-    if (!result) {
-      alert("プロジェクトの作成に失敗しました");
+  const handleClickButton = () => {
+    if (validate()) {
+      setError("プロジェクト名を入力してください");
+      return;
     }
-    setOpened(false);
-    form.reset();
-    return;
+    createProject(name)
+      .then(() => {
+        setOpened(false);
+        setName("");
+      })
+      .catch(() => {
+        alert("プロジェクトの作成に失敗しました");
+      });
   };
+
+  useEffect(() => {
+    setError("");
+  }, [name]);
 
   return (
     <>
@@ -37,20 +37,20 @@ export const CreateProjectButton = () => {
         opened={opened}
         onClose={() => setOpened(false)}
       >
-        <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
-          <TextInput
-            label="プロジェクト名"
-            size="sm"
-            mb={15}
-            data-autofocus
-            {...form.getInputProps("name")}
-          />
-          <Group position="right">
-            <Button type="submit" size="xs">
-              作成
-            </Button>
-          </Group>
-        </form>
+        <TextInput
+          label="プロジェクト名"
+          size="sm"
+          mb={15}
+          data-autofocus
+          value={name}
+          onChange={setName}
+          error={error}
+        />
+        <Group position="right">
+          <Button size="xs" onClick={handleClickButton}>
+            作成
+          </Button>
+        </Group>
       </Modal>
       <Button
         leftIcon={<PlusIcon />}
