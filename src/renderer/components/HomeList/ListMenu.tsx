@@ -25,6 +25,10 @@ export const ListMenu = ({ id }: Props) => {
       event.target.value = "";
       return;
     }
+
+    const name =
+      file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
+
     await addFile(id, file.name, file.path);
     event.target.value = "";
   };
