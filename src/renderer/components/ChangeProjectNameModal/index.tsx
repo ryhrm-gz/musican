@@ -54,6 +54,7 @@ export const ChangeProjectNameModal = ({
       title="プロジェクトの名前変更"
       opened={opened}
       onClose={() => setOpened(false)}
+      onClick={(e) => e.preventDefault()}
     >
       <TextInput
         label="プロジェクト名"

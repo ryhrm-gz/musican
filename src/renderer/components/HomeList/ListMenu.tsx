@@ -1,6 +1,6 @@
 import { Menu } from "@mantine/core";
 import { FilePlusIcon, Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, MouseEventHandler, useRef, useState } from "react";
 import { addFile } from "../../utils/addFile";
 import { deleteProject } from "../../utils/deleteProject";
 import { ChangeProjectNameModal } from "../ChangeProjectNameModal";
@@ -45,6 +45,7 @@ export const ListMenu = ({ id }: Props) => {
         type="file"
         ref={inputRef}
         onChange={handleChangeInput}
+        onClick={(e) => e.stopPropagation()}
         accept=".mp3,.wav"
       />
       <ChangeProjectNameModal
@@ -53,7 +54,7 @@ export const ListMenu = ({ id }: Props) => {
         setOpened={setIsModalOpen}
       />
       <Menu className="header-menu" onClick={(e) => e.preventDefault()}>
-        <Menu.Item icon={<FilePlusIcon />} onClick={handleClickAddFile}>
+        <Menu.Item icon={<FilePlusIcon />} onClick={() => handleClickAddFile()}>
           ファイル追加
         </Menu.Item>
         <Menu.Item icon={<Pencil1Icon />} onClick={() => setIsModalOpen(true)}>
