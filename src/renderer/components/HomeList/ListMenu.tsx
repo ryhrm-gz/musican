@@ -52,7 +52,7 @@ export const ListMenu = ({ id }: Props) => {
         opened={isModalOpen}
         setOpened={setIsModalOpen}
       />
-      <Menu className="header-menu">
+      <Menu className="header-menu" onClick={(e) => e.preventDefault()}>
         <Menu.Item icon={<FilePlusIcon />} onClick={handleClickAddFile}>
           ファイル追加
         </Menu.Item>

@@ -31,7 +31,7 @@ export const HomeRow = ({ id, name, updatedAt }: Props) => {
           variant="light"
           radius="xs"
         >
-          {hasAudios ? `V${count}` : "no files"}
+          {count === undefined ? "" : count ? `V${count}` : "no files"}
         </Badge>
       </td>
       <td>{updatedAt.toLocaleString("ja-JP")}</td>

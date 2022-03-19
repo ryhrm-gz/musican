@@ -37,7 +37,7 @@ export const HomeCard = ({ id, name, updatedAt }: Props) => {
           variant="light"
           radius="xs"
         >
-          {hasAudios ? `V${count}` : "no files"}
+          {count === undefined ? "" : count ? `V${count}` : "no files"}
         </Badge>
         <ListMenu id={id} />
       </Group>
