@@ -1,15 +1,16 @@
 import { Menu } from "@mantine/core";
 import { FilePlusIcon, Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
-import { ChangeEvent, MouseEventHandler, useRef, useState } from "react";
+import { ChangeEvent, MouseEvent, useRef, useState } from "react";
 import { addFile } from "../../utils/addFile";
 import { deleteProject } from "../../utils/deleteProject";
 import { ChangeProjectNameModal } from "../ChangeProjectNameModal";
 
 type Props = {
   id: number;
+  onClick: (e: any) => void;
 };
 
-export const ListMenu = ({ id }: Props) => {
+export const ListMenu = ({ id, onClick }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -53,7 +54,7 @@ export const ListMenu = ({ id }: Props) => {
         opened={isModalOpen}
         setOpened={setIsModalOpen}
       />
-      <Menu className="header-menu" onClick={(e) => e.preventDefault()}>
+      <Menu className="header-menu" onClick={(e) => onClick(e)}>
         <Menu.Item icon={<FilePlusIcon />} onClick={() => handleClickAddFile()}>
           ファイル追加
         </Menu.Item>

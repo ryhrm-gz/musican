@@ -39,7 +39,7 @@ export const HomeCard = ({ id, name, updatedAt }: Props) => {
         >
           {count === undefined ? "" : count ? `V${count}` : "no files"}
         </Badge>
-        <ListMenu id={id} />
+        <ListMenu id={id} onClick={(e) => e.preventDefault()} />
       </Group>
       <Tooltip
         wrapLines

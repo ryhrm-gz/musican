@@ -1,4 +1,5 @@
 import { Badge } from "@mantine/core";
+import { useNavigate } from "@tanstack/react-location";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../db";
 import { ListMenu } from "./ListMenu";
@@ -14,6 +15,8 @@ export const HomeRow = ({ id, name, updatedAt }: Props) => {
     return null;
   }
 
+  const navigate = useNavigate();
+
   const count = useLiveQuery(
     () => db.audios.where("projectId").equals(id).count(),
     [id]
@@ -22,7 +25,10 @@ export const HomeRow = ({ id, name, updatedAt }: Props) => {
   const hasAudios = count !== 0;
 
   return (
-    <tr style={{ cursor: "pointer" }}>
+    <tr
+      style={{ cursor: "pointer" }}
+      onClick={() => navigate({ to: `/project/${id}` })}
+    >
       <td>{name}</td>
       <td>
         <Badge
@@ -36,7 +42,7 @@ export const HomeRow = ({ id, name, updatedAt }: Props) => {
       </td>
       <td>{updatedAt.toLocaleString("ja-JP")}</td>
       <td>
-        <ListMenu id={id} />
+        <ListMenu id={id} onClick={(e) => e.stopPropagation()} />
       </td>
     </tr>
   );
