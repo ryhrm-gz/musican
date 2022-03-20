@@ -2,14 +2,13 @@ import { Box } from "@mantine/core";
 import { useMatch } from "@tanstack/react-location";
 import { useLiveQuery } from "dexie-react-hooks";
 import { ProjectHeader } from "../components/ProjectHeader";
+import { Wave } from "../components/Wave";
 import { db } from "../db";
 
 export const Project = () => {
   const { id } = useMatch().params;
+
   const project = useLiveQuery(async () => await db.projects.get(Number(id)));
-  const audios = useLiveQuery(
-    async () => await db.audios.where("projectId").equals(Number(id)).toArray()
-  );
 
   if (!project) {
     return null;
@@ -22,7 +21,7 @@ export const Project = () => {
         name={project.name}
         updatedAt={project.updatedAt}
       />
-      {audios?.length === 0 ? "no audios" : "audios"}
+      <Wave id={Number(id)} />
     </Box>
   );
 };
