@@ -25,16 +25,15 @@ export const ProjectHeader = ({ name, updatedAt }: Props) => {
           >
             <ChevronLeftIcon />
           </ActionIcon>
-          <Group sx={{ height: "100%" }} spacing={0}>
-            <Box>
-              <Text weight={600} size="sm">
-                {name}
-              </Text>
-              <Text color="dimmed" size="xs">
-                更新日時 : {updatedAt.toLocaleString("ja-JP")}
-              </Text>
-            </Box>
-          </Group>
+
+          <Box>
+            <Text weight={600} size="sm">
+              {name}
+            </Text>
+            <Text color="dimmed" size="xs">
+              更新日時 : {updatedAt.toLocaleString("ja-JP")}
+            </Text>
+          </Box>
         </Group>
       </Paper>
     </Box>
