@@ -17,7 +17,12 @@ export const Project = () => {
 
   return (
     <Box>
-      <ProjectHeader name={project.name} updatedAt={project.updatedAt} />
+      <ProjectHeader
+        id={Number(id)}
+        name={project.name}
+        updatedAt={project.updatedAt}
+      />
+      {audios?.length === 0 ? "no audios" : "audios"}
     </Box>
   );
 };

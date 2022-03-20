@@ -1,6 +1,6 @@
 import { Box, Group } from "@mantine/core";
-import { AddFileButton } from "./AddFileButton";
-import { CreateProjectButton } from "./CreateProjectButton";
+import { AddFileButton } from "../AddFileButton";
+import { CreateProjectButton } from "../CreateProjectButton";
 
 export const HomeButtons = () => {
   return (

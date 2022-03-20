@@ -1,9 +1,14 @@
 import { Button } from "@mantine/core";
 import { FilePlusIcon } from "@radix-ui/react-icons";
 import { ChangeEvent, useRef } from "react";
+import { addFile } from "../../utils/addFile";
 import { createProjectWithAddFile } from "../../utils/createProjectWithAddFile";
 
-export const AddFileButton = () => {
+type Props = {
+  id?: number;
+};
+
+export const AddFileButton = ({ id }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const addProcessing = useRef(false);
 
@@ -30,7 +35,12 @@ export const AddFileButton = () => {
     const name =
       file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
 
-    await createProjectWithAddFile(name, file.path);
+    if (id) {
+      await addFile(id, file.name, file.path);
+    } else {
+      await createProjectWithAddFile(name, file.path);
+    }
+
     event.target.value = "";
   };
 
