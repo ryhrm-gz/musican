@@ -1,5 +1,6 @@
 import { Menu, useMantineColorScheme } from "@mantine/core";
 import { GearIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { Link } from "@tanstack/react-location";
 
 export const HeaderMenu = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -12,7 +13,9 @@ export const HeaderMenu = () => {
       >
         {dark ? "ライトモード" : "ダークモード"}
       </Menu.Item>
-      <Menu.Item icon={<GearIcon />}>設定</Menu.Item>
+      <Menu.Item icon={<GearIcon />} component={Link} to="/settings">
+        設定
+      </Menu.Item>
     </Menu>
   );
 };

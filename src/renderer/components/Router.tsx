@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-location";
 import { Home } from "../pages/Home";
 import { Project } from "../pages/Project";
+import { Settings } from "../pages/Settings";
 
 const hashHistory = createHashHistory();
 export const location = new ReactLocation({
@@ -25,4 +26,5 @@ export const routes: Route[] = [
       },
     ],
   },
+  { path: "settings", element: <Settings /> },
 ];

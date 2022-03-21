@@ -22,11 +22,11 @@ export const App = () => {
       toggleColorScheme={toggleColorScheme}
     >
       <MantineProvider theme={{ colorScheme, primaryColor: "teal" }}>
-        <Layout>
-          <Router routes={routes} location={location}>
+        <Router routes={routes} location={location}>
+          <Layout>
             <Outlet />
-          </Router>
-        </Layout>
+          </Layout>
+        </Router>
       </MantineProvider>
     </ColorSchemeProvider>
   );
