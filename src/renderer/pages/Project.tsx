@@ -14,7 +14,8 @@ export const Project = () => {
 
   const project = useLiveQuery(async () => await db.projects.get(Number(id)));
   const audios = useLiveQuery(
-    async () => await db.audios.where("projectId").equals(Number(id)).toArray()
+    async () =>
+      await db.audios.where("projectId").equals(Number(id)).reverse().toArray()
   );
 
   if (!project || !audios) {
