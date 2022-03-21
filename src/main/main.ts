@@ -1,6 +1,7 @@
 import path from "path";
-import { BrowserWindow, app, session } from "electron";
+import { BrowserWindow, app, session, ipcMain, shell } from "electron";
 import { searchDevtools } from "electron-search-devtools";
+import { MainProcessResponse } from "../@types";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -54,3 +55,12 @@ if (!isLock) {
 }
 
 app.once("window-all-closed", () => app.quit());
+
+// open folder
+ipcMain.handle("open-folder", (event, path): MainProcessResponse<undefined> => {
+  shell.showItemInFolder(path);
+
+  return {
+    status: "ok",
+  };
+});

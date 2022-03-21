@@ -1,4 +1,5 @@
 import {
+  ActionIcon,
   Badge,
   Box,
   Group,
@@ -8,6 +9,8 @@ import {
   useMantineColorScheme,
   useMantineTheme,
 } from "@mantine/core";
+import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
+import { MouseEventHandler } from "react";
 import { Audio } from "../../db";
 
 type Props = {
@@ -29,18 +32,27 @@ export const VersionListItem = ({
   const dark = colorScheme === "dark";
   const theme = useMantineTheme();
 
-  const handleClick = () => {
+  const handleClickItem = () => {
     setVersion(index);
+  };
+
+  const handleClickOpenFolder = async (e: any) => {
+    e.stopPropagation();
+    const response = await window.api.openFolder(audio.path);
+
+    if (response.status === "error") {
+      alert("フォルダを開くことができませんでした");
+    }
   };
 
   return (
     <Box
       sx={{
         width: "100%",
-        height: 110,
+        height: 115,
         cursor: "pointer",
       }}
-      onClick={handleClick}
+      onClick={handleClickItem}
     >
       <Paper
         withBorder
@@ -62,11 +74,23 @@ export const VersionListItem = ({
         }}
         p="xs"
       >
-        <Group direction="column" spacing="xs">
+        <Group direction="column" spacing="xs" sx={{ position: "relative" }}>
+          <Tooltip
+            label="フォルダを開く"
+            sx={{ position: "absolute", top: 0, right: 15 }}
+          >
+            <ActionIcon
+              variant="light"
+              size="md"
+              onClick={(e: any) => handleClickOpenFolder(e)}
+            >
+              <OpenInNewWindowIcon />
+            </ActionIcon>
+          </Tooltip>
           <Badge size="sm" variant="light" radius="xs">
             V{version}
           </Badge>
-          <Text size="xs" lineClamp={1}>
+          <Text size="sm" lineClamp={1}>
             {audio.createdAt.toLocaleString("ja-JP")}
           </Text>
           <Tooltip
