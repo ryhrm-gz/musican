@@ -36,7 +36,7 @@ export const AddFileButton = ({ id }: Props) => {
       file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
 
     if (id) {
-      await addFile(id, file.name, file.path);
+      await addFile(id, name, file.path);
     } else {
       await createProjectWithAddFile(name, file.path);
     }

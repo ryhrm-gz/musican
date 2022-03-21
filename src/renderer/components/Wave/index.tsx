@@ -1,28 +1,16 @@
-import {
-  Box,
-  Overlay,
-  Transition,
-  useMantineColorScheme,
-  useMantineTheme,
-} from "@mantine/core";
+import { Box, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import CursorPlugin from "wavesurfer.js/src/plugin/cursor";
 import { WaveForm, WaveSurfer } from "wavesurfer-react";
 import { PluginType } from "wavesurfer-react/dist/containers/WaveSurfer";
-import {
-  forwardRef,
-  useState,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import { Audio } from "../../db";
 
 type Props = {
   audios: Audio[];
+  setLoading: (loading: boolean) => void;
 };
 
 export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
-  const [loading, setLoading] = useState(true);
   const waveSurferRef = useRef<WaveSurfer>();
   useImperativeHandle(ref, () => waveSurferRef.current!);
 
@@ -48,7 +36,6 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
   const plugins: PluginType[] = [cursorPlugin];
 
   useEffect(() => {
-    setLoading(true);
     const path = props.audios?.[0]?.path;
 
     if (waveSurferRef.current && path) {
@@ -72,22 +59,12 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
     waveSurferRef.current = waveSurfer;
 
     waveSurferRef.current.on("ready", () => {
-      setLoading(false);
+      props.setLoading(false);
     });
   };
 
   return (
     <Box sx={{ flex: 1 }} p="xs">
-      <Transition
-        mounted={loading}
-        transition="fade"
-        duration={200}
-        timingFunction="ease"
-      >
-        {(styles) => (
-          <Overlay mt={50} color="#000" zIndex={50} blur={2} style={styles} />
-        )}
-      </Transition>
       <WaveSurfer plugins={plugins} onMount={handleMount}>
         <WaveForm
           id="waveform"
