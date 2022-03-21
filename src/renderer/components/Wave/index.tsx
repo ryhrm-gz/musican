@@ -4,6 +4,9 @@ import { WaveForm, WaveSurfer } from "wavesurfer-react";
 import { PluginType } from "wavesurfer-react/dist/containers/WaveSurfer";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import { Audio } from "../../db";
+import { useSetAtom } from "jotai";
+import { currentTimeState } from "../../state/currentTimeState";
+import { durationState } from "../../state/durationState";
 
 type Props = {
   audios: Audio[];
@@ -11,6 +14,9 @@ type Props = {
 };
 
 export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
+  const setCurrentTime = useSetAtom(currentTimeState);
+  const setDuration = useSetAtom(durationState);
+
   const waveSurferRef = useRef<WaveSurfer | null>(null);
   useImperativeHandle(ref, () => waveSurferRef.current!);
 
@@ -41,6 +47,8 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
     if (waveSurferRef.current && path) {
       waveSurferRef.current.load(path);
     }
+
+    return () => waveSurferRef.current?.destroy();
   }, []);
 
   useEffect(() => {
@@ -59,7 +67,17 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
     waveSurferRef.current = waveSurfer;
 
     waveSurferRef.current.on("ready", () => {
+      setCurrentTime(0);
+      setDuration(waveSurferRef.current?.getDuration() ?? 0);
       props.setLoading(false);
+    });
+
+    waveSurferRef.current.on("audioprocess", () => {
+      setCurrentTime(waveSurferRef.current?.getCurrentTime() ?? 0);
+    });
+
+    waveSurferRef.current.on("destroy", () => {
+      setCurrentTime(0);
     });
   };
 
@@ -72,7 +90,6 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
           hideScrollbar
           height={200}
           barWidth={3}
-          barRadius={3}
           barGap={3}
           waveColor={dark ? theme.colors.dark[3] : theme.colors.gray[4]}
           progressColor={dark ? theme.colors.teal[8] : theme.colors.teal[4]}

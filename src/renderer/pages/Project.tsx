@@ -63,7 +63,10 @@ export const Project = () => {
           setLoading={setLoading}
         />
       </Group>
-      <Transport waveSurferRef={waveSurferRef} />
+      <Transport
+        waveSurferRef={waveSurferRef}
+        currentVersionIndex={currentVersionIndex}
+      />
     </Box>
   );
 };
