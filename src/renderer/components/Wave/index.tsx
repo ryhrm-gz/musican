@@ -2,19 +2,11 @@ import { Box, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import CursorPlugin from "wavesurfer.js/src/plugin/cursor";
 import { WaveForm, WaveSurfer } from "wavesurfer-react";
 import { PluginType } from "wavesurfer-react/dist/containers/WaveSurfer";
-import {
-  forwardRef,
-  useCallback,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
-import { db } from "../../db";
-import { useLiveQuery } from "dexie-react-hooks";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
+import { Audio } from "../../db";
 
 type Props = {
-  id: number;
+  audios: Audio[];
 };
 
 export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
@@ -42,17 +34,13 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
   };
   const plugins: PluginType[] = [cursorPlugin];
 
-  const audios = useLiveQuery(
-    async () => await db.audios.where("projectId").equals(props.id).toArray()
-  );
-
   useEffect(() => {
-    const path = audios?.[audios?.length - 1]?.path;
+    const path = props.audios?.[props.audios?.length - 1]?.path;
 
     if (waveSurferRef.current && path) {
       waveSurferRef.current.load(path);
     }
-  }, [audios]);
+  }, [props.audios]);
 
   useEffect(() => {
     waveSurferRef.current?.setWaveColor(
@@ -70,12 +58,8 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
     waveSurferRef.current = waveSurfer;
   };
 
-  if (!audios) {
-    return null;
-  }
-
   return (
-    <Box>
+    <Box sx={{ flex: 1 }} p="xs">
       <WaveSurfer plugins={plugins} onMount={handleMount}>
         <WaveForm
           id="waveform"
