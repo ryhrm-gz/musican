@@ -15,7 +15,7 @@ export const createProjectWithAddFile = async (name: string, path: string) => {
       createdAt: now,
       updatedAt: now,
     });
-  }).catch((error) => {
+  }).catch(() => {
     alert("プロジェクトの作成に失敗しました");
   });
 };

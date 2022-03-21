@@ -1,9 +1,10 @@
 import { db } from "../db";
 
 export const deleteProject = async (projectId: number) => {
-  try {
+  db.transaction("rw", [db.projects, db.audios], async () => {
     await db.projects.delete(projectId);
-  } catch (error) {
+    await db.audios.where("projectId").equals(projectId).delete();
+  }).catch(() => {
     alert("プロジェクトの削除に失敗しました");
-  }
+  });
 };
