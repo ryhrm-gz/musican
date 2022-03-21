@@ -4,9 +4,10 @@ import { WaveForm, WaveSurfer } from "wavesurfer-react";
 import { PluginType } from "wavesurfer-react/dist/containers/WaveSurfer";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import { Audio } from "../../db";
-import { useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { currentTimeState } from "../../state/currentTimeState";
 import { durationState } from "../../state/durationState";
+import { volumeState } from "../../state/volumeState";
 
 type Props = {
   audios: Audio[];
@@ -16,6 +17,7 @@ type Props = {
 export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
   const setCurrentTime = useSetAtom(currentTimeState);
   const setDuration = useSetAtom(durationState);
+  const [volume, setVolume] = useAtom(volumeState);
 
   const waveSurferRef = useRef<WaveSurfer | null>(null);
   useImperativeHandle(ref, () => waveSurferRef.current!);
@@ -67,6 +69,7 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
     waveSurferRef.current = waveSurfer;
 
     waveSurferRef.current.on("ready", () => {
+      waveSurferRef.current?.setVolume(volume / 100);
       setCurrentTime(0);
       setDuration(waveSurferRef.current?.getDuration() ?? 0);
       props.setLoading(false);
@@ -76,8 +79,8 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
       setCurrentTime(waveSurferRef.current?.getCurrentTime() ?? 0);
     });
 
-    waveSurferRef.current.on("destroy", () => {
-      setCurrentTime(0);
+    waveSurferRef.current.on("seek", () => {
+      setCurrentTime(waveSurferRef.current?.getCurrentTime() ?? 0);
     });
   };
 
