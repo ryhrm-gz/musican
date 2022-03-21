@@ -3,6 +3,7 @@ import { useMatch } from "@tanstack/react-location";
 import { useLiveQuery } from "dexie-react-hooks";
 import { useRef } from "react";
 import { ProjectHeader } from "../components/ProjectHeader";
+import { Transport } from "../components/Transport";
 import { VersionList } from "../components/VersionList";
 import { Wave } from "../components/Wave";
 import { db } from "../db";
@@ -31,6 +32,7 @@ export const Project = () => {
         <Wave audios={audios} ref={waveSurferRef} />
         <VersionList />
       </Group>
+      <Transport />
     </Box>
   );
 };
