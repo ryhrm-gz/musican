@@ -6,9 +6,24 @@ import { VersionListItem } from "./VersionListItem";
 type Props = {
   audios: Audio[];
   waveSurferRef: RefObject<WaveSurfer>;
+  currentVersionIndex: number;
+  setCurrentVersionIndex: (index: number) => void;
+  setLoading: (loading: boolean) => void;
 };
 
-export const VersionList = ({ audios, waveSurferRef }: Props) => {
+export const VersionList = ({
+  audios,
+  waveSurferRef,
+  currentVersionIndex,
+  setCurrentVersionIndex,
+  setLoading,
+}: Props) => {
+  const setVersion = (index: number) => {
+    setLoading(true);
+    setCurrentVersionIndex(index);
+    waveSurferRef.current?.load(audios[index].path);
+  };
+
   return (
     <Paper
       withBorder
@@ -24,11 +39,15 @@ export const VersionList = ({ audios, waveSurferRef }: Props) => {
         scrollbarSize={8}
       >
         {audios.map((audio, index) => {
+          const isCurrent = index === currentVersionIndex;
           return (
             <VersionListItem
               key={audio.id}
               audio={audio}
               version={audios.length - index}
+              isCurrent={isCurrent}
+              index={index}
+              setVersion={setVersion}
             />
           );
         })}

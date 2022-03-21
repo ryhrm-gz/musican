@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
-  const waveSurferRef = useRef<WaveSurfer>();
+  const waveSurferRef = useRef<WaveSurfer | null>(null);
   useImperativeHandle(ref, () => waveSurferRef.current!);
 
   const { colorScheme } = useMantineColorScheme();
@@ -41,7 +41,7 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
     if (waveSurferRef.current && path) {
       waveSurferRef.current.load(path);
     }
-  }, [props.audios]);
+  }, []);
 
   useEffect(() => {
     waveSurferRef.current?.setWaveColor(
