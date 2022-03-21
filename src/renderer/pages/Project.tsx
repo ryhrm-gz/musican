@@ -1,4 +1,4 @@
-import { Box, Group, Overlay, Transition } from "@mantine/core";
+import { Box, Center, Group, Overlay, Transition, Text } from "@mantine/core";
 import { useMatch } from "@tanstack/react-location";
 import { useLiveQuery } from "dexie-react-hooks";
 import { useEffect, useRef, useState } from "react";
@@ -34,6 +34,23 @@ export const Project = () => {
 
   if (!project || !audios) {
     return null;
+  }
+
+  if (!audios.length) {
+    return (
+      <Box>
+        <ProjectHeader
+          id={Number(id)}
+          name={project.name}
+          updatedAt={project.updatedAt}
+        />
+        <Center mt={100}>
+          <Text size="sm" color="dimmed">
+            オーディオデータがありません
+          </Text>
+        </Center>
+      </Box>
+    );
   }
 
   return (
