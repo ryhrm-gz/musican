@@ -32,7 +32,7 @@ export const HomeCard = ({ id, name, updatedAt }: Props) => {
     >
       <Group position="apart">
         <Badge
-          color={hasAudios ? "green" : "gray"}
+          color={hasAudios ? "teal" : "gray"}
           size="sm"
           variant="light"
           radius="xs"

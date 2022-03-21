@@ -32,7 +32,7 @@ export const HomeRow = ({ id, name, updatedAt }: Props) => {
       <td>{name}</td>
       <td>
         <Badge
-          color={hasAudios ? "green" : "gray"}
+          color={hasAudios ? "teal" : "gray"}
           size="sm"
           variant="light"
           radius="xs"
