@@ -2,7 +2,7 @@ import { Box, Paper, Group, ActionIcon, Text } from "@mantine/core";
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
 import { Link } from "@tanstack/react-location";
 
-export const SettingHeader = () => {
+export const SettingsHeader = () => {
   return (
     <Box sx={{ width: "100%", height: 55 }}>
       <Paper

@@ -1,10 +1,10 @@
 import { Box } from "@mantine/core";
-import { SettingHeader } from "../components/SettingHeader";
+import { SettingsHeader } from "../components/SettingsHeader";
 
 export const Settings = () => {
   return (
     <Box>
-      <SettingHeader />
+      <SettingsHeader />
     </Box>
   );
 };

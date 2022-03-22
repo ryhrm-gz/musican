@@ -23,7 +23,7 @@
     "@mantine/hooks": "^4.0.7",
     "@mantine/notifications": "^4.0.7",
     "@radix-ui/react-icons": "^1.1.0",
-    "@tanstack/react-location": "^3.7.3",
+    "@tanstack/react-location": "^3.7.4",
     "dexie": "^3.2.1",
     "dexie-react-hooks": "^1.1.1",
     "jotai": "^1.6.1",
@@ -33,7 +33,7 @@
     "wavesurfer.js": "^6.0.4"
   },
   "devDependencies": {
-    "@types/node": "^17.0.21",
+    "@types/node": "^17.0.22",
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.14",
     "@types/wavesurfer.js": "^6.0.2",
