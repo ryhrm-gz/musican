@@ -1,6 +1,7 @@
 import path from "path";
-import { BrowserWindow, app, session } from "electron";
+import { BrowserWindow, app, session, ipcMain, shell } from "electron";
 import { searchDevtools } from "electron-search-devtools";
+import { MainProcessResponse } from "../@types";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -20,6 +21,10 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    minWidth: 500,
+    minHeight: 500,
+    useContentSize: true,
+    titleBarStyle: "hidden",
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
@@ -50,3 +55,12 @@ if (!isLock) {
 }
 
 app.once("window-all-closed", () => app.quit());
+
+// open folder
+ipcMain.handle("open-folder", (event, path): MainProcessResponse<undefined> => {
+  shell.showItemInFolder(path);
+
+  return {
+    status: "ok",
+  };
+});
