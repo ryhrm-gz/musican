@@ -1,36 +1,15 @@
-import { Box, Button, Center, Group, SegmentedControl } from "@mantine/core";
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  GridIcon,
-  HamburgerMenuIcon,
-} from "@radix-ui/react-icons";
+import { Box, Center, Group, SegmentedControl } from "@mantine/core";
+import { GridIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useAtom } from "jotai";
-import { updatedSortState } from "../../state/updatedSortState";
 import { viewModeState } from "../../state/viewModeState";
+import { UpdatedDateTimeSortButton } from "../UpdatedDatetimeSortButton";
 
 export const HomeViewModeControls = () => {
-  const [updatedSort, setUpdatedSort] = useAtom(updatedSortState);
   const [viewMode, setViewMode] = useAtom(viewModeState);
-
-  const updatedSortIcon =
-    updatedSort === "latest" ? <ArrowDownIcon /> : <ArrowUpIcon />;
   return (
     <Box sx={{ width: "100%" }} mb={5}>
       <Group sx={{ width: "100%", height: "100%" }} position="apart">
-        <Button
-          compact
-          pl={3}
-          size="xs"
-          color="gray"
-          variant="subtle"
-          rightIcon={updatedSortIcon}
-          onClick={() =>
-            setUpdatedSort(updatedSort === "latest" ? "oldest" : "latest")
-          }
-        >
-          更新日時
-        </Button>
+        <UpdatedDateTimeSortButton />
         <Box>
           <SegmentedControl
             value={viewMode}

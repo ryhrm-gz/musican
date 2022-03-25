@@ -5,12 +5,12 @@ import { HomeViewModeControls } from "../components/HomeViewModeControls";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db";
 import { useAtom, useAtomValue } from "jotai";
-import { updatedSortState } from "../state/updatedSortState";
+import { updatedDatetimeSortState } from "../state/updatedDatetimeSortState";
 import { pageState } from "../state/pageState";
 import { useEffect } from "react";
 
 export const Home = () => {
-  const updatedSort = useAtomValue(updatedSortState);
+  const updatedSort = useAtomValue(updatedDatetimeSortState);
   const [page, setPage] = useAtom(pageState);
   const offset = (page - 1) * 20;
 
