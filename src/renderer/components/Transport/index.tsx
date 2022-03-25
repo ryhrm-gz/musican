@@ -1,10 +1,11 @@
 import { ActionIcon, Box, Group, Paper, Slider, Text } from "@mantine/core";
-import { PauseIcon, PlayIcon } from "@radix-ui/react-icons";
+import { PauseIcon, PlayIcon, SpeakerQuietIcon } from "@radix-ui/react-icons";
 import { useAtom, useAtomValue } from "jotai";
 import { RefObject, useEffect, useState } from "react";
 import { currentTimeState } from "../../state/currentTimeState";
 import { durationState } from "../../state/durationState";
 import { volumeState } from "../../state/volumeState";
+import { VolumeIcon } from "./VolumeIcon";
 
 type Props = {
   waveSurferRef: RefObject<WaveSurfer>;
@@ -58,6 +59,7 @@ export const Transport = ({ waveSurferRef, currentVersionIndex }: Props) => {
             </Text>
           </Group>
           <Group spacing="xs" position="center">
+            <VolumeIcon volume={volume} />
             <Slider
               sx={{ width: 120 }}
               size="sm"
