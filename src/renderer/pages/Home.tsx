@@ -7,6 +7,7 @@ import { db } from "../db";
 import { useAtom, useAtomValue } from "jotai";
 import { updatedSortState } from "../state/updatedSortState";
 import { pageState } from "../state/pageState";
+import { useEffect } from "react";
 
 export const Home = () => {
   const updatedSort = useAtomValue(updatedSortState);
@@ -34,6 +35,12 @@ export const Home = () => {
     }
   }, [updatedSort, page]);
 
+  useEffect(() => {
+    if (projects?.length === 0) {
+      setPage(1);
+    }
+  }, [projects]);
+
   return (
     <Box p="sm" pb={0}>
       <HomeButtons />
@@ -41,7 +48,7 @@ export const Home = () => {
       <Divider />
       <ScrollArea style={{ height: "calc(100vh - 150px)" }} scrollbarSize={8}>
         <ProjectList projects={projects} />
-        {count && Math.ceil(count / 20) > 1 ? (
+        {count ? (
           <>
             <Divider my={20} />
             <Center>
