@@ -11,7 +11,7 @@ export const ViewModeSelect = () => {
       <SegmentedControl
         value={viewMode}
         onChange={(value) => setViewMode(value as "grid" | "rows")}
-        size="sm"
+        size="md"
         data={[
           {
             value: "grid",

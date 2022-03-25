@@ -8,11 +8,13 @@ import { useAtom, useAtomValue } from "jotai";
 import { updatedDatetimeSortState } from "../state/updatedDatetimeSortState";
 import { pageState } from "../state/pageState";
 import { useEffect } from "react";
+import { perPageState } from "../state/perPageState";
 
 export const Home = () => {
   const updatedSort = useAtomValue(updatedDatetimeSortState);
   const [page, setPage] = useAtom(pageState);
-  const offset = (page - 1) * 20;
+  const perPage = useAtomValue(perPageState);
+  const offset = (page - 1) * perPage;
 
   const count = useLiveQuery(async () => await db.projects.count());
 
@@ -22,7 +24,7 @@ export const Home = () => {
         .where("id")
         .above(0)
         .offset(offset)
-        .limit(20)
+        .limit(perPage)
         .reverse()
         .sortBy("updatedAt");
     } else {
@@ -30,10 +32,10 @@ export const Home = () => {
         .where("id")
         .above(0)
         .offset(offset)
-        .limit(20)
+        .limit(perPage)
         .sortBy("updatedAt");
     }
-  }, [updatedSort, page]);
+  }, [updatedSort, page, perPage]);
 
   useEffect(() => {
     if (projects?.length === 0) {
@@ -48,12 +50,12 @@ export const Home = () => {
       <Divider />
       <ScrollArea style={{ height: "calc(100vh - 150px)" }} scrollbarSize={8}>
         <ProjectList projects={projects} />
-        {count && Math.ceil(count / 20) > 1 ? (
+        {count && Math.ceil(count / perPage) > 1 ? (
           <>
             <Divider my={20} />
             <Center>
               <Pagination
-                total={Math.ceil(count / 20)}
+                total={Math.ceil(count / perPage)}
                 size="sm"
                 pb={20}
                 page={page}
