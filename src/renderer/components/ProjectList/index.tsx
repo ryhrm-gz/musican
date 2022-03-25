@@ -4,10 +4,10 @@ import { useAtomValue } from "jotai";
 import { db } from "../../db";
 import { updatedSortState } from "../../state/updatedSortState";
 import { viewModeState } from "../../state/viewModeState";
-import { HomeCard } from "./HomeCard";
-import { HomeRow } from "./HomeRow";
+import { Card } from "./Card";
+import { Row } from "./Row";
 
-export const HomeList = () => {
+export const ProjectList = () => {
   const updatedSort = useAtomValue(updatedSortState);
   const viewMode = useAtomValue(viewModeState);
   const projects = useLiveQuery(async () => {
@@ -42,7 +42,7 @@ export const HomeList = () => {
                 lg={7}
                 xl={6}
               >
-                <HomeCard {...project} />
+                <Card {...project} />
               </Grid.Col>
             );
           })}
@@ -59,7 +59,7 @@ export const HomeList = () => {
           </thead>
           <tbody>
             {projects?.map((project) => {
-              return <HomeRow key={project.id} {...project} />;
+              return <Row key={project.id} {...project} />;
             })}
           </tbody>
         </Table>

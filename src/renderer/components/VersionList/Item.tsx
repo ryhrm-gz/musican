@@ -20,7 +20,7 @@ type Props = {
   setVersion: (index: number) => void;
 };
 
-export const VersionListItem = ({
+export const Item = ({
   audio,
   version,
   isCurrent,

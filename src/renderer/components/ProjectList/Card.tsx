@@ -1,8 +1,14 @@
-import { Badge, Card, Group, Text, Tooltip } from "@mantine/core";
+import {
+  Badge,
+  Card as MantineCard,
+  Group,
+  Text,
+  Tooltip,
+} from "@mantine/core";
 import { Link } from "@tanstack/react-location";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../db";
-import { ListMenu } from "./ListMenu";
+import { Menu } from "./Menu";
 
 type Props = {
   id?: number;
@@ -10,7 +16,7 @@ type Props = {
   updatedAt: Date;
 };
 
-export const HomeCard = ({ id, name, updatedAt }: Props) => {
+export const Card = ({ id, name, updatedAt }: Props) => {
   if (!id) {
     return null;
   }
@@ -23,7 +29,7 @@ export const HomeCard = ({ id, name, updatedAt }: Props) => {
   const hasAudios = count !== 0;
 
   return (
-    <Card
+    <MantineCard
       shadow="md"
       p="sm"
       sx={{ width: "100%", height: "100%", cursor: "pointer" }}
@@ -39,7 +45,7 @@ export const HomeCard = ({ id, name, updatedAt }: Props) => {
         >
           {count === undefined ? "" : count ? `V${count}` : "no files"}
         </Badge>
-        <ListMenu id={id} onClick={(e) => e.preventDefault()} />
+        <Menu id={id} onClick={(e) => e.preventDefault()} />
       </Group>
       <Tooltip
         wrapLines
@@ -62,6 +68,6 @@ export const HomeCard = ({ id, name, updatedAt }: Props) => {
       <Text size="xs" color="dimmed" mt={6}>
         {updatedAt.toLocaleString("ja-JP")}
       </Text>
-    </Card>
+    </MantineCard>
   );
 };

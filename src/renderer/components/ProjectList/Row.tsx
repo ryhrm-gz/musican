@@ -2,7 +2,7 @@ import { Badge } from "@mantine/core";
 import { useNavigate } from "@tanstack/react-location";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../db";
-import { ListMenu } from "./ListMenu";
+import { Menu } from "./Menu";
 
 type Props = {
   id?: number;
@@ -10,7 +10,7 @@ type Props = {
   updatedAt: Date;
 };
 
-export const HomeRow = ({ id, name, updatedAt }: Props) => {
+export const Row = ({ id, name, updatedAt }: Props) => {
   if (!id) {
     return null;
   }
@@ -42,7 +42,7 @@ export const HomeRow = ({ id, name, updatedAt }: Props) => {
       </td>
       <td>{updatedAt.toLocaleString("ja-JP")}</td>
       <td>
-        <ListMenu id={id} onClick={(e) => e.stopPropagation()} />
+        <Menu id={id} onClick={(e) => e.stopPropagation()} />
       </td>
     </tr>
   );

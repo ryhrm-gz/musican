@@ -6,9 +6,9 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { Logo } from "../Logo";
-import { HeaderMenu } from "./HeaderMenu";
+import { Menu } from "./Menu";
 
-export const Header = () => {
+export const Titlebar = () => {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   return (
@@ -29,7 +29,7 @@ export const Header = () => {
             pre alpha
           </Text>
         </Group>
-        <HeaderMenu />
+        <Menu />
       </Group>
     </MantineHeader>
   );

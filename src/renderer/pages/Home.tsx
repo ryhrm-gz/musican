@@ -1,6 +1,6 @@
 import { Box, Divider } from "@mantine/core";
 import { HomeButtons } from "../components/HomeButtons";
-import { HomeList } from "../components/HomeList";
+import { ProjectList } from "../components/ProjectList";
 import { HomeViewModeControls } from "../components/HomeViewModeControls";
 
 export const Home = () => {
@@ -9,7 +9,7 @@ export const Home = () => {
       <HomeButtons />
       <HomeViewModeControls />
       <Divider />
-      <HomeList />
+      <ProjectList />
     </Box>
   );
 };

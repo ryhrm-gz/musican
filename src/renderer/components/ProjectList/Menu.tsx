@@ -1,4 +1,4 @@
-import { Menu } from "@mantine/core";
+import { Menu as MantineMenu } from "@mantine/core";
 import { FilePlusIcon, Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { ChangeEvent, MouseEvent, useRef, useState } from "react";
 import { addFile } from "../../utils/addFile";
@@ -10,7 +10,7 @@ type Props = {
   onClick: (e: any) => void;
 };
 
-export const ListMenu = ({ id, onClick }: Props) => {
+export const Menu = ({ id, onClick }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -54,17 +54,27 @@ export const ListMenu = ({ id, onClick }: Props) => {
         opened={isModalOpen}
         setOpened={setIsModalOpen}
       />
-      <Menu className="header-menu" onClick={(e) => onClick(e)}>
-        <Menu.Item icon={<FilePlusIcon />} onClick={() => handleClickAddFile()}>
+      <MantineMenu className="header-menu" onClick={(e) => onClick(e)}>
+        <MantineMenu.Item
+          icon={<FilePlusIcon />}
+          onClick={() => handleClickAddFile()}
+        >
           ファイル追加
-        </Menu.Item>
-        <Menu.Item icon={<Pencil1Icon />} onClick={() => setIsModalOpen(true)}>
+        </MantineMenu.Item>
+        <MantineMenu.Item
+          icon={<Pencil1Icon />}
+          onClick={() => setIsModalOpen(true)}
+        >
           名前変更
-        </Menu.Item>
-        <Menu.Item color="red" icon={<TrashIcon />} onClick={handleClickDelete}>
+        </MantineMenu.Item>
+        <MantineMenu.Item
+          color="red"
+          icon={<TrashIcon />}
+          onClick={handleClickDelete}
+        >
           削除
-        </Menu.Item>
-      </Menu>
+        </MantineMenu.Item>
+      </MantineMenu>
     </>
   );
 };

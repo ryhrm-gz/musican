@@ -1,7 +1,7 @@
 import { Box, Paper, ScrollArea, Text } from "@mantine/core";
 import { RefObject } from "react";
 import { Audio } from "../../db";
-import { VersionListItem } from "./VersionListItem";
+import { Item } from "./Item";
 
 type Props = {
   audios: Audio[];
@@ -41,7 +41,7 @@ export const VersionList = ({
         {audios.map((audio, index) => {
           const isCurrent = index === currentVersionIndex;
           return (
-            <VersionListItem
+            <Item
               key={audio.id}
               audio={audio}
               version={audios.length - index}
