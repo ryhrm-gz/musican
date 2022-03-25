@@ -17,7 +17,7 @@ export const ProjectList = ({ projects }: Props) => {
   }
 
   return (
-    <ScrollArea style={{ height: "calc(100vh - 150px)" }} scrollbarSize={8}>
+    <>
       {viewMode === "grid" ? (
         <Grid
           mt={13}
@@ -59,6 +59,6 @@ export const ProjectList = ({ projects }: Props) => {
           </tbody>
         </Table>
       )}
-    </ScrollArea>
+    </>
   );
 };
