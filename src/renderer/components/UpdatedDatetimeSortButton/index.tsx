@@ -3,7 +3,7 @@ import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 import { useAtom } from "jotai";
 import { updatedDatetimeSortState } from "../../state/updatedDatetimeSortState";
 
-export const UpdatedDateTimeSortButton = () => {
+export const UpdatedDatetimeSortButton = () => {
   const [updatedSort, setUpdatedSort] = useAtom(updatedDatetimeSortState);
   const updatedSortIcon =
     updatedSort === "latest" ? <ArrowDownIcon /> : <ArrowUpIcon />;

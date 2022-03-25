@@ -1,7 +1,7 @@
 import { Box, Center, Divider, Pagination, ScrollArea } from "@mantine/core";
 import { HomeButtons } from "../components/HomeButtons";
 import { ProjectList } from "../components/ProjectList";
-import { HomeViewModeControls } from "../components/HomeViewModeControls";
+import { HomeControls } from "../components/HomeControls";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db";
 import { useAtom, useAtomValue } from "jotai";
@@ -44,11 +44,11 @@ export const Home = () => {
   return (
     <Box p="sm" pb={0}>
       <HomeButtons />
-      <HomeViewModeControls />
+      <HomeControls />
       <Divider />
       <ScrollArea style={{ height: "calc(100vh - 150px)" }} scrollbarSize={8}>
         <ProjectList projects={projects} />
-        {count ? (
+        {count && Math.ceil(count / 20) > 1 ? (
           <>
             <Divider my={20} />
             <Center>
