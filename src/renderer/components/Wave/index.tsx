@@ -69,8 +69,12 @@ export const Wave = forwardRef<WaveSurfer, Props>((props, ref) => {
     waveSurferRef.current = waveSurfer;
 
     waveSurferRef.current.on("ready", () => {
-      console.log(volume);
-      waveSurferRef.current?.setVolume(volume / 100);
+      const currentVolume =
+        waveSurferRef.current?.getVolume() === 1
+          ? volume / 100
+          : waveSurferRef.current?.getVolume();
+      console.log(currentVolume);
+      waveSurferRef.current?.setVolume(currentVolume ?? 0.1);
       setCurrentTime(0);
       setDuration(waveSurferRef.current?.getDuration() ?? 0);
       props.setLoading(false);
