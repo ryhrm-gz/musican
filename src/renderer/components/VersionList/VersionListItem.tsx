@@ -10,7 +10,6 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
-import { MouseEventHandler } from "react";
 import { Audio } from "../../db";
 
 type Props = {
@@ -49,7 +48,7 @@ export const VersionListItem = ({
     <Box
       sx={{
         width: "100%",
-        height: 115,
+        height: 70,
         cursor: "pointer",
       }}
       onClick={handleClickItem}
@@ -93,18 +92,6 @@ export const VersionListItem = ({
           <Text size="sm" lineClamp={1}>
             {audio.createdAt.toLocaleString("ja-JP")}
           </Text>
-          <Tooltip
-            wrapLines
-            label={audio.path}
-            transition="fade"
-            openDelay={500}
-            width={300}
-            gutter={-30}
-          >
-            <Text size="xs" lineClamp={2} color="dimmed">
-              {audio.path}
-            </Text>
-          </Tooltip>
         </Group>
       </Paper>
     </Box>
