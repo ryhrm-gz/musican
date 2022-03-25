@@ -192,47 +192,47 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
-"@mantine/core@^4.0.7":
-  version "4.0.7"
-  resolved "https://registry.npmjs.org/@mantine/core/-/core-4.0.7.tgz"
-  integrity sha512-HBUlPR7T5C0phuaKuY5SfyMB9hSMatXrqfbf8XE+a/3mRYacqa2wvp2YRGFtLxbLD49bZqybRXc8OR1VtsrZ6A==
+"@mantine/core@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-4.0.8.tgz#f870df4f78e8d40a33d573aaee895cc75f800f32"
+  integrity sha512-AjiTWYn4MvFIvPZeaEg8yWNicaE8Qus0Sqmpj/wFsuTcd2pDz/duZqqt6476q6uNRU7Satoog5QpI9FpT/FPXg==
   dependencies:
-    "@mantine/styles" "4.0.7"
+    "@mantine/styles" "4.0.8"
     "@popperjs/core" "^2.9.3"
     "@radix-ui/react-scroll-area" "^0.1.1"
     clsx "^1.1.1"
     react-popper "^2.2.5"
     react-textarea-autosize "^8.3.2"
 
-"@mantine/dropzone@^4.0.7":
-  version "4.0.7"
-  resolved "https://registry.npmjs.org/@mantine/dropzone/-/dropzone-4.0.7.tgz"
-  integrity sha512-M69k+UONT9wLszrHl4HsTHMW0b4ffIXcgVQzqJPprF2CWIZzRDZCu9fzEzkIKna/owHQQ9R3W2X5PQw4H7Xzuw==
+"@mantine/dropzone@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@mantine/dropzone/-/dropzone-4.0.8.tgz#62f7b0f9b027b86532b752e6ec9ffff1b8eb921a"
+  integrity sha512-SKBMs/nsXto4GRcdNOseiMMqYcAdVOQPhPdb7M4jWwWCYW3NZD26fwxD35Wkrqxr7q9BqEs60tgMTgzqM8hjRg==
   dependencies:
     react-dropzone "^11.4.2"
 
-"@mantine/form@^4.0.7":
-  version "4.0.7"
-  resolved "https://registry.npmjs.org/@mantine/form/-/form-4.0.7.tgz"
-  integrity sha512-hnLGdv4zJSQMs/r0lxBudgUIPoqJz7SRCLVn4uhZ9h95mIpE1fjRFlJkDJtOnwOb017lq2tdmgBfhOTNJ6KpEA==
+"@mantine/form@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@mantine/form/-/form-4.0.8.tgz#9ea17a3ca6108ac259f046376471b552541beb62"
+  integrity sha512-TPip/GK2fWvhRvCuGSUmUUHPLVuiRzeiuiPdgX0FExsxaQrOJJAk3/GMFj5mgSjv6d8w/M1cpefpu/HQNjEaaw==
 
-"@mantine/hooks@^4.0.7":
-  version "4.0.7"
-  resolved "https://registry.npmjs.org/@mantine/hooks/-/hooks-4.0.7.tgz"
-  integrity sha512-SjP6SZIgri3oMLDZBDYIo+nj9EKAN5OgvCDzREfD9k++BluPk2AfyzCpaZ7mr4+4ZskS6o5FIBvKqvUZYzr9bg==
+"@mantine/hooks@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.0.8.tgz#4b3c62e8a136de45fafbda8c3845dbdd63860d11"
+  integrity sha512-f9DNbLB0KjVdTGxVeas/+9fNSiniv//Pm3SAm7NtaeCNX1EU3WECnjph+bnQx0YVwINCRVlLbyWwpkI64m132w==
 
-"@mantine/notifications@^4.0.7":
-  version "4.0.7"
-  resolved "https://registry.npmjs.org/@mantine/notifications/-/notifications-4.0.7.tgz"
-  integrity sha512-p2/R5Dg7/IM/om/dcxGqJXw1g01441lbxAvHrtKoDglgbodekmaXbNr1sFx7S6tWFC9EcIWc66nPOMuw5uZXvw==
+"@mantine/notifications@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@mantine/notifications/-/notifications-4.0.8.tgz#745f11d838eaf4d5bdd63a2c1510159b87b498d8"
+  integrity sha512-b23+cvn69AZMZZ5WUBxq4X6SioqmL1y2XG7rtX0cQYiYzlInHiswoeERaEFnaF/hlVr6bIfAiLG8ExIPJIPWoA==
   dependencies:
     clsx "^1.1.1"
     react-transition-group "^4.4.2"
 
-"@mantine/styles@4.0.7":
-  version "4.0.7"
-  resolved "https://registry.npmjs.org/@mantine/styles/-/styles-4.0.7.tgz"
-  integrity sha512-8QOHAigeTZwS90XwL/MjokmMu9vZDnIJetQRUrRnprovNaLm96aklPVQeXmgxmDlWGuleDq9zhLhjyBJSMPN0A==
+"@mantine/styles@4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@mantine/styles/-/styles-4.0.8.tgz#bfe7e8dda1daf031d95d999f02ccb6a099674487"
+  integrity sha512-DRS7F/GZmXEwhv3QwZDSFSA+/bK2Q8ohIrw/oroCY6yKkniFLwOIngTnhm9njrNYmfOz5r02VTppH4577yWvaQ==
   dependencies:
     "@emotion/cache" "^11.7.1"
     "@emotion/react" "^11.7.1"
@@ -444,10 +444,10 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-14.18.12.tgz"
   integrity sha512-q4jlIR71hUpWTnGhXWcakgkZeHa3CCjcQcnuzU8M891BAWA2jHiziiWEPEkdS5pFsz7H9HJiy8BrK7tBRNrY7A==
 
-"@types/node@^17.0.22":
-  version "17.0.22"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.22.tgz#38b6c4b9b2f3ed9f2e376cce42a298fb2375251e"
-  integrity sha512-8FwbVoG4fy+ykY86XCAclKZDORttqE5/s7dyWZKLXTdv3vRy5HozBEinG5IqhvPXXzIZEcTVbuHlQEI6iuwcmw==
+"@types/node@^17.0.23":
+  version "17.0.23"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.23.tgz#3b41a6e643589ac6442bdbd7a4a3ded62f33f7da"
+  integrity sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -475,10 +475,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@^17.0.41":
-  version "17.0.41"
-  resolved "https://registry.npmjs.org/@types/react/-/react-17.0.41.tgz"
-  integrity sha512-chYZ9ogWUodyC7VUTRBfblysKLjnohhFY9bGLwvnUFFy48+vB9DikmB3lW0qTFmBcKSzmdglcvkHK71IioOlDA==
+"@types/react@^17.0.43":
+  version "17.0.43"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.43.tgz#4adc142887dd4a2601ce730bc56c3436fdb07a55"
+  integrity sha512-8Q+LNpdxf057brvPu1lMtC5Vn7J119xrP1aq4qiaefNioQUYANF/CYeK4NsKorSZyUGJ66g0IM+4bbjwx45o2A==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -1201,10 +1201,10 @@ electron-to-chromium@^1.4.76:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.82.tgz"
   integrity sha512-Ks+ANzLoIrFDUOJdjxYMH6CMKB8UQo5modAwvSZTxgF+vEs/U7G5IbWFUp6dS4klPkTDVdxbORuk8xAXXhMsWw==
 
-electron@^17.1.2:
-  version "17.1.2"
-  resolved "https://registry.npmjs.org/electron/-/electron-17.1.2.tgz"
-  integrity sha512-hqKQaUIRWX5Y2eAD8FZINWD/e5TKdpkbBYbkcZmJS4Bd1PKQsaDVc9h5xoA8zZQkPymE9rss+swjRpAFurOPGQ==
+electron@^17.2.0:
+  version "17.2.0"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-17.2.0.tgz#a5c42c16352ea968fcb5d1ce256bec51e7d140fe"
+  integrity sha512-eNXhPVEUofkgAeqRFvTizzYecoCMyS0Rar08WZHSAw9wjfZXawYMvTpjjjk9GiX9W/+Cjxua4YtGn5bOTabc0A==
   dependencies:
     "@electron/get" "^1.13.0"
     "@types/node" "^14.6.2"
@@ -2992,10 +2992,10 @@ typedarray@^0.0.6:
   resolved "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.6.2:
-  version "4.6.2"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.6.2.tgz"
-  integrity sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg==
+typescript@^4.6.3:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
+  integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"

@@ -1,26 +1,21 @@
 import { Grid, ScrollArea, Table } from "@mantine/core";
-import { useLiveQuery } from "dexie-react-hooks";
 import { useAtomValue } from "jotai";
-import { db } from "../../db";
-import { updatedSortState } from "../../state/updatedSortState";
+import { Project } from "../../db";
 import { viewModeState } from "../../state/viewModeState";
 import { Card } from "./Card";
 import { Row } from "./Row";
 
-export const ProjectList = () => {
-  const updatedSort = useAtomValue(updatedSortState);
+type Props = {
+  projects?: Project[];
+};
+
+export const ProjectList = ({ projects }: Props) => {
   const viewMode = useAtomValue(viewModeState);
-  const projects = useLiveQuery(async () => {
-    if (updatedSort === "latest") {
-      return await db.projects
-        .where("id")
-        .above(0)
-        .reverse()
-        .sortBy("updatedAt");
-    } else {
-      return await db.projects.where("id").above(0).sortBy("updatedAt");
-    }
-  }, [updatedSort]);
+
+  if (!projects) {
+    return null;
+  }
+
   return (
     <ScrollArea style={{ height: "calc(100vh - 150px)" }} scrollbarSize={8}>
       {viewMode === "grid" ? (
@@ -30,7 +25,7 @@ export const ProjectList = () => {
           gutter="lg"
           sx={{ width: "100%", margin: 0 }}
         >
-          {projects?.map((project) => {
+          {projects.map((project) => {
             return (
               <Grid.Col
                 key={project.id}
@@ -58,7 +53,7 @@ export const ProjectList = () => {
             </tr>
           </thead>
           <tbody>
-            {projects?.map((project) => {
+            {projects.map((project) => {
               return <Row key={project.id} {...project} />;
             })}
           </tbody>
