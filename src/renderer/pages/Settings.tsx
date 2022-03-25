@@ -1,6 +1,7 @@
 import { Box, ScrollArea, Tabs } from "@mantine/core";
 import { InfoCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import { Info } from "../components/Settings/Info";
+import { Reset } from "../components/Settings/Reset";
 import { SettingsHeader } from "../components/SettingsHeader";
 
 export const Settings = () => {
@@ -12,7 +13,9 @@ export const Settings = () => {
           <Tabs.Tab label="情報" icon={<InfoCircledIcon />}>
             <Info />
           </Tabs.Tab>
-          <Tabs.Tab label="リセット" icon={<TrashIcon />}></Tabs.Tab>
+          <Tabs.Tab label="リセット" icon={<TrashIcon />}>
+            <Reset />
+          </Tabs.Tab>
         </Tabs>
       </ScrollArea>
     </Box>

@@ -10,7 +10,7 @@ type Props = {
 
 export const Card = ({ items }: Props) => {
   return (
-    <MantineCard p={0} sx={{ maxWidth: 800 }} mt={10} pb={14}>
+    <MantineCard p={0} sx={{ maxWidth: 800 }} mt={10} py={14}>
       <Group direction="column" sx={{ width: "100%" }}>
         {items.map((item, index) => (
           <Fragment key={item.label}>
