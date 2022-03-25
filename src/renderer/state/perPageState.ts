@@ -1,3 +1,3 @@
 import { atomWithStorage } from "jotai/utils";
 
-export const perPageState = atomWithStorage<number>("per-page", 30);
+export const perPageState = atomWithStorage<number>("per-page", 20);
