@@ -26,7 +26,7 @@ export const Titlebar = () => {
             variant="gradient"
             gradient={{ from: "green", to: "cyan", deg: 45 }}
           >
-            pre alpha
+            alpha
           </Text>
         </Group>
         <Menu />
