@@ -2,7 +2,7 @@
   "name": "musican",
   "productName": "Musican",
   "description": "🎵 Music management app for composer",
-  "version": "0.0.1",
+  "version": "0.1.0-alpha.0",
   "license": "MIT",
   "main": "dist/main.js",
   "scripts": {
