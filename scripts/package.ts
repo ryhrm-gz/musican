@@ -10,6 +10,7 @@ build({
     },
     mac: {
       target: "dmg",
+      icon: "../musican.icns",
     },
   },
 });
