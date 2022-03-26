@@ -15,9 +15,9 @@ export const Titlebar = () => {
     <MantineHeader height={50} className="header">
       <Group position="apart" sx={{ width: "100%", height: "100%" }} px="xs">
         <Box></Box>
-        <Group spacing={0}>
+        <Group spacing={5}>
           <Logo
-            style={{ width: "auto", height: 50 }}
+            style={{ width: "auto", height: 30 }}
             fill={dark ? "white" : "black"}
           />
           <Text
