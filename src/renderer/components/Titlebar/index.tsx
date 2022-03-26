@@ -17,17 +17,9 @@ export const Titlebar = () => {
         <Box></Box>
         <Group spacing={5}>
           <Logo
-            style={{ width: "auto", height: 30 }}
+            style={{ width: "auto", height: 25 }}
             fill={dark ? "white" : "black"}
           />
-          <Text
-            size="xs"
-            weight={800}
-            variant="gradient"
-            gradient={{ from: "green", to: "cyan", deg: 45 }}
-          >
-            alpha
-          </Text>
         </Group>
         <Menu />
       </Group>
