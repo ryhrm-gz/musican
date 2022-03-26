@@ -9,7 +9,10 @@ build({
       output: "release/",
     },
     mac: {
-      target: "dmg",
+      target: {
+        target: "dmg",
+        arch: ["x64", "arm64"],
+      },
       icon: "../musican.icns",
     },
   },
