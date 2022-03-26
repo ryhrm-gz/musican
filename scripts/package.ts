@@ -9,6 +9,7 @@ build({
       output: "release/",
     },
     mac: {
+      artifactName: "${productName}-${version}-${arch}.${ext}",
       target: {
         target: "dmg",
         arch: ["x64", "arm64"],
