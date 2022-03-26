@@ -1,21 +1,21 @@
-import { Menu, useMantineColorScheme } from "@mantine/core";
+import { Menu as MantineMenu, useMantineColorScheme } from "@mantine/core";
 import { GearIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { Link } from "@tanstack/react-location";
 
-export const HeaderMenu = () => {
+export const Menu = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   return (
-    <Menu className="header-menu">
-      <Menu.Item
+    <MantineMenu className="header-menu">
+      <MantineMenu.Item
         onClick={() => toggleColorScheme()}
         icon={dark ? <SunIcon /> : <MoonIcon />}
       >
         {dark ? "ライトモード" : "ダークモード"}
-      </Menu.Item>
-      <Menu.Item icon={<GearIcon />} component={Link} to="/settings">
+      </MantineMenu.Item>
+      <MantineMenu.Item icon={<GearIcon />} component={Link} to="/settings">
         設定
-      </Menu.Item>
-    </Menu>
+      </MantineMenu.Item>
+    </MantineMenu>
   );
 };

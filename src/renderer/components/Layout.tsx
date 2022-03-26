@@ -1,6 +1,6 @@
 import { AppShell } from "@mantine/core";
 import { ReactNode } from "react";
-import { Header } from "./Header";
+import { Titlebar } from "./Titlebar";
 
 type Props = {
   children: ReactNode;
@@ -10,7 +10,7 @@ export const Layout = ({ children }: Props) => {
   return (
     <AppShell
       padding={0}
-      header={<Header />}
+      header={<Titlebar />}
       styles={(theme) => ({
         main: {
           height: "calc(100vh - 50px)",

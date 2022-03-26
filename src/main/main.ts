@@ -32,6 +32,11 @@ const createWindow = () => {
 
   if (isDev) mainWindow.webContents.openDevTools();
 
+  mainWindow.webContents.on("new-window", (event, url) => {
+    event.preventDefault();
+    shell.openExternal(url);
+  });
+
   mainWindow.loadFile("dist/index.html");
 };
 
@@ -62,5 +67,13 @@ ipcMain.handle("open-folder", (event, path): MainProcessResponse<undefined> => {
 
   return {
     status: "ok",
+  };
+});
+
+// get version
+ipcMain.handle("get-version", () => {
+  return {
+    status: "ok",
+    data: app.getVersion(),
   };
 });
