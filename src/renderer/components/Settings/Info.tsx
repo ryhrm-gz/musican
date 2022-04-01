@@ -27,7 +27,7 @@ export const Info = () => {
       label: "",
       value: (
         <Logo
-          style={{ width: "auto", height: 80 }}
+          style={{ width: "auto", height: 60 }}
           fill={dark ? "white" : "black"}
         />
       ),
