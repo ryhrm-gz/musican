@@ -40,8 +40,8 @@ export const Info = () => {
     {
       label: "公式サイト",
       value: (
-        <Anchor href="https://ryoh.page" target="_blank" size="sm">
-          https://ryoh.page
+        <Anchor href="https://musican.vercel.app" target="_blank" size="sm">
+          https://musican.vercel.app
         </Anchor>
       ),
     },
